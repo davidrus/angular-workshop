@@ -1,17 +1,37 @@
 <!doctype html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Angular.js workshop</title>
-	<link rel="stylesheet" href="css/app.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<script src="js/lib/angular.js"></script>
-	<script src="js/lib/angular-route.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
-	<script src="js/directives.js"></script>
+    <meta charset="utf-8">
+    <title>Vězeňská evidence</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- knihovny -->
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+
+    <!-- aplikace -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
 <body>
-	<ng-view></ng-view>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2">
+                <h2>Menu</h2>
+            </div>
+
+            <div class="span10">
+                <h1>Vězeňská evidence</h1>
+                <ul>
+                    <li>David Rus</li>
+                    <li>Josef Šíma</li>
+                    <li>Marek Fojtl</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
