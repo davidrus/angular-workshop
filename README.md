@@ -13,12 +13,10 @@ Workshop AngularJS - basic
 - ng-view
 - proklik na detail osoby
 - načtení parametrů z URL
-
-## Step 4:
 - napojení na jednoduchý backend
 
-## Step 5:
+## Step 4:
 - přidání, mazání a editace osoby (modely)
 
-## Step 6:
+## Step 5:
 - základní animace

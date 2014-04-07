@@ -1,9 +1,10 @@
 var app = angular.module("app",['ngRoute']);
+var API = "http://rus-david.kancelar.seznam.cz";
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider){
-	$routeProvider.when('/vypis',{templateUrl:'partials/vypis.html'});
-	$routeProvider.when('/kontakt',{templateUrl:'partials/kontakt.html'});
-	$routeProvider.when('/pridej',{templateUrl:'partials/pridej.html'});
-	$routeProvider.when('/view/:id',{templateUrl:'partials/detail.html'});
-	$routeProvider.otherwise({redirectTo:'/vypis'});
+	$routeProvider.when('/persons',{templateUrl:'partials/persons.html'});
+	$routeProvider.when('/persons/:id',{templateUrl:'partials/personDetail.html'});
+	$routeProvider.when('/contact',{templateUrl:'partials/contact.html'});
+	$routeProvider.when('/add',{templateUrl:'partials/add.html'});
+	$routeProvider.otherwise({redirectTo:'/persons'});
 }]);

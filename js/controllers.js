@@ -1,17 +1,12 @@
-app.controller("ListCtrl",["$scope",function($scope){
-	var data = [{
-		'name': 'David Rus',
-		'id': 1
-	},{
-		'name': 'Josef Šíma',
-		'id': 2
-	},{ 
-		'name': 'Marek Fojtl',
-		'id':3
-	}];
-	$scope.data = data;
+app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
+	$http.get(API + "/persons").then(function(response){
+		$scope.data = response.data;	
+	});
 }]);
 
-app.controller("DetailCtrl",['$scope', '$routeParams', function($scope,$routeParams){
+app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
 	$scope.detailId = $routeParams.id;
+	$http.get(API + "/persons/" + $routeParams.id).then(function(response){
+		$scope.data = response.data;
+	});
 }]);
