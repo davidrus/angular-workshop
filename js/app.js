@@ -4,5 +4,6 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
 	$routeProvider.when('/vypis',{templateUrl:'partials/vypis.html'});
 	$routeProvider.when('/kontakt',{templateUrl:'partials/kontakt.html'});
 	$routeProvider.when('/pridej',{templateUrl:'partials/pridej.html'});
+	$routeProvider.when('/view/:id',{templateUrl:'partials/detail.html'});
 	$routeProvider.otherwise({redirectTo:'/vypis'});
 }]);
