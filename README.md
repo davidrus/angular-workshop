@@ -12,12 +12,11 @@ Workshop AngularJS - basic
 - napojení routovače na menu
 - ng-view
 - proklik na detail osoby
-
-## Step 4:
+- načtení parametrů z URL
 - napojení na jednoduchý backend
 
-## Step 5:
+## Step 4:
 - přidání, mazání a editace osoby (modely)
 
-## Step 6:
+## Step 5:
 - základní animace
