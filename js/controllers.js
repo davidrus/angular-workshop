@@ -15,7 +15,7 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,
 
 }]);
 
-app.controller("EditCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
+app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', function($scope,$routeParams,$http,$location){
 
 	if(!!$routeParams.id){
 
@@ -28,6 +28,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', function($scope,$r
 		$scope.submit = function(){
 			$http.put(API + "/persons/" + $routeParams.id, $scope.data).then(function(response){
 				console.log(response);
+				$location.url("/persons/"+$routeParams.id);
 			});		
 		};
 
@@ -35,6 +36,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', function($scope,$r
 		$scope.deletePerson = function(){
 			$http.delete(API + "/persons/" + $routeParams.id).then(function(response){
 				console.log(response);
+				$location.url("/persons");
 			});
 		};
 
@@ -43,6 +45,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', function($scope,$r
 		$scope.submit = function(){
 			$http.post(API + "/persons", $scope.data).then(function(response){
 				console.log(response);
+				$location.url("/persons/"+response.data.id);
 			});		
 		};
 
