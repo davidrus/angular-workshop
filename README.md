@@ -1,5 +1,5 @@
-angular-workshop
-================
+Workshop AngularJS - basic
+==========================
 
 ## Step 1:
 - skelet aplikace
