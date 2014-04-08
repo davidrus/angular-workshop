@@ -15,13 +15,21 @@
 </head>
 <body>
 
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="#">Vězeňská evidence</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span2">
+            <div class="span3">
                 <ng-include src="'partials/_menu.html'"></ng-include>
             </div>
 
-            <div class="span10">
+            <div class="span9">
                 <ng-view></ng-view>
             </div>
         </div>

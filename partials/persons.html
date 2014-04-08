@@ -1,6 +1,15 @@
-<h1>Vězeňská evidence</h1>
-<ul ng-controller="ListCtrl">
-    <li ng-repeat="person in data">
-    	<a ng-href="/#/persons/{{person.id}}">{{person.name}}</a>
-    </li>
-</ul>
+<table class="table table-striped table-bordered table-condensed" ng-controller="ListCtrl">
+	<tr>
+		<th>#</th>
+		<th>Jméno</th>
+		<th>Akce</th>
+	</tr>
+    <tr ng-repeat="person in data">
+    	<td>{{person.id}}</td>
+    	<td><a ng-href="/#/persons/{{person.id}}">{{person.name}}</a></td>
+    	<td>
+    		<a ng-href="/#/persons/edit/{{person.id}}" class="btn btn-default">editovat</a>
+    		<span ng-click="deletePerson(person.id,$index)" class="btn btn-danger">smazat</span>
+    	</td>
+    </tr>
+</table>
