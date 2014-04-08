@@ -43,6 +43,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 
 		// ukladani
 		$scope.submit = function(){
+			$scope.formSubmitted = true; // zviditelnime chyby
 			if($scope.myForm.$valid){
 				$http.put(API + "/persons/" + $routeParams.id, $scope.data).then(function(response){
 					$location.url("/persons/"+$routeParams.id);
@@ -60,9 +61,12 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 	}else{
 
 		$scope.submit = function(){
-			$http.post(API + "/persons", $scope.data).then(function(response){
-				$location.url("/persons/"+response.data.id);
-			});		
+			$scope.formSubmitted = true; // zviditelnime chyby
+			if($scope.myForm.$valid){
+				$http.post(API + "/persons", $scope.data).then(function(response){
+					$location.url("/persons/"+response.data.id);
+				});
+			}
 		};
 
 	}
