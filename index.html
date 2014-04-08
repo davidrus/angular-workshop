@@ -14,18 +14,34 @@
 </head>
 <body>
 
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="#">Vězeňská evidence</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span2">
-                <h2>Menu</h2>
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Menu</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="span10" ng-controller="ListCtrl">
+             <div class="span9" ng-controller="ListCtrl">
 
-                <h1>Vězeňská evidence</h1>
-                <ul>
-                    <li ng-repeat="name in data">{{name}}</li>
-                </ul>
+                <table class="table table-striped table-bordered table-condensed" ng-controller="ListCtrl">
+                    <tr>
+                        <th>Jméno</th>
+                    </tr>
+                    <tr ng-repeat="name in data">
+                        <td>{{name}}</td>
+                    </tr>
+                </table>
 
             </div>
         </div>
