@@ -20,3 +20,4 @@ Workshop AngularJS - basic
 
 ## Step 5:
 - základní animace
+- validování formuláře
