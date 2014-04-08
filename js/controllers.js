@@ -44,7 +44,6 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 		// ukladani
 		$scope.submit = function(){
 			$http.put(API + "/persons/" + $routeParams.id, $scope.data).then(function(response){
-				console.log(response);
 				$location.url("/persons/"+$routeParams.id);
 			});		
 		};
@@ -52,7 +51,6 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 		// mazani
 		$scope.deletePerson = function(){
 			$http.delete(API + "/persons/" + $routeParams.id).then(function(response){
-				console.log(response);
 				$location.url("/persons");
 			});
 		};
@@ -61,7 +59,6 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 
 		$scope.submit = function(){
 			$http.post(API + "/persons", $scope.data).then(function(response){
-				console.log(response);
 				$location.url("/persons/"+response.data.id);
 			});		
 		};
