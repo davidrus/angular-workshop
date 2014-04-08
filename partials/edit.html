@@ -1,14 +1,15 @@
 <div ng-controller="EditCtrl">
 	<h1 ng-if="edit">Editace osoby</h1>
 	<h1 ng-if="!edit">Přidání osoby</h1>
-	<form ng-submit="submit()">
+	<form name="myForm" ng-submit="submit()" novalidate>
 		<div class="form-group">
-			<label>Jméno</label><input type="text" ng-model="data.firstname" />
-			<label>Příjmení</label><input type="text" ng-model="data.surname" />
+			<label>Jméno</label><input type="text" ng-model="data.firstname" required />
+			<label>Příjmení</label><input type="text" ng-model="data.surname" required />
+			<label>Email</label><input type="email" ng-model="data.email" required />
 		</div>
 		<div class="form-group">
 			<label>Role</label>
-			<select class="form-control" ng-model="data.role" ng-options="role.id as role.name for role in roles">
+			<select class="form-control" ng-model="data.role" ng-options="role.id as role.name for role in roles" required>
 				<option value="">-- vyberte --</option>
 			</select>
 		</div>
@@ -16,6 +17,7 @@
 	</form>
 
 	<pre>{{data}}</pre>
+	<p>Valid: {{myForm.$valid}}</p>
 
 	<button ng-if="edit" class="btn btn-danger" ng-click="deletePerson()">Smazat</button>
 	
