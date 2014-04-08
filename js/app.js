@@ -1,4 +1,4 @@
-var app = angular.module("app",['ngRoute']);
+var app = angular.module("app",['ngRoute','ngAnimate']);
 var API = "http://rus-david.kancelar.seznam.cz";
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider){

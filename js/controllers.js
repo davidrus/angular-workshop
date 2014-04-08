@@ -1,12 +1,13 @@
 app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 
+	$scope.filterRole = "";
+
 	$http.get(API + "/persons").then(function(response){
 		$scope.data = response.data;	
 	});
 
 	$scope.deletePerson = function(id,index){
 		$http.delete(API + "/persons/" + id).then(function(response){
-			console.log(response);
 			$scope.data.splice(index,1);
 		});
 	};

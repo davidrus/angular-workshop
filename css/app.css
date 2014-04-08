@@ -1,3 +1,15 @@
 body{
 	padding-top: 60px;
 }
+
+.animation.ng-enter,
+.animation.ng-leave{
+	-webkit-transition: 0.3s all; /* Chrome */
+	transition: 0.3s all;
+}
+
+.animation.ng-enter 		{ opacity: 0; }
+.animation.ng-leave 		{ opacity: 1; }
+
+.animation.ng-enter.ng-enter-active 	{ opacity: 1; }
+.animation.ng-leave.ng-leave-active 	{ opacity: 0; }

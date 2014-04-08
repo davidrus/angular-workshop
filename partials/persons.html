@@ -4,12 +4,24 @@
 		<th>Jméno</th>
 		<th>Akce</th>
 	</tr>
-    <tr ng-repeat="person in data">
+    <tr ng-repeat="person in data | filter:searchText | filter:{role:filterRole}" class="animation">
     	<td>{{person.id}}</td>
     	<td><a ng-href="/#/persons/{{person.id}}">{{person.firstname}} {{person.surname}}</a></td>
     	<td>
     		<a ng-href="/#/persons/edit/{{person.id}}" class="btn btn-default">editovat</a>
     		<span ng-click="deletePerson(person.id,$index)" class="btn btn-danger">smazat</span>
     	</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <h4>Vyhledávání:</h4>
+            <input type="text" name="search" ng-model="searchText" value="" /><br />
+        </td>
+        <td>
+            <h4>Chci vypsat:</h4>
+            <input type="radio" name="limit" ng-model="filterRole" value="" /> vše<br />
+            <input type="radio" name="limit" ng-model="filterRole" value="1" /> bachaře<br />
+            <input type="radio" name="limit" ng-model="filterRole" value="2" /> vězně
+        </td>
     </tr>
 </table>
