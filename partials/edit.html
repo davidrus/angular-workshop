@@ -6,7 +6,7 @@
 			<label>Jméno</label><input type="text" name="firstname" ng-model="data.firstname" required />
 			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.firstname.$error.required">Povinná položka!</span>
 			
-			<label>Příjmení</label><input type="text" ng-model="data.surname" required />
+			<label>Příjmení</label><input type="text" name="surname" ng-model="data.surname" required />
 			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.surname.$error.required">Povinná položka!</span>
 
 			<label>Email</label><input type="email" name="email" ng-model="data.email" required />
