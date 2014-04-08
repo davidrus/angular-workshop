@@ -1,12 +1,13 @@
 app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 
+	$scope.filterRole = "";
+
 	$http.get(API + "/persons").then(function(response){
 		$scope.data = response.data;	
 	});
 
 	$scope.deletePerson = function(id,index){
 		$http.delete(API + "/persons/" + id).then(function(response){
-			console.log(response);
 			$scope.data.splice(index,1);
 		});
 	};
@@ -43,16 +44,17 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 
 		// ukladani
 		$scope.submit = function(){
-			$http.put(API + "/persons/" + $routeParams.id, $scope.data).then(function(response){
-				console.log(response);
-				$location.url("/persons/"+$routeParams.id);
-			});		
+			$scope.formSubmitted = true; // zviditelnime chyby
+			if($scope.myForm.$valid){
+				$http.put(API + "/persons/" + $routeParams.id, $scope.data).then(function(response){
+					$location.url("/persons/"+$routeParams.id);
+				});		
+			}
 		};
 
 		// mazani
 		$scope.deletePerson = function(){
 			$http.delete(API + "/persons/" + $routeParams.id).then(function(response){
-				console.log(response);
 				$location.url("/persons");
 			});
 		};
@@ -60,10 +62,12 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 	}else{
 
 		$scope.submit = function(){
-			$http.post(API + "/persons", $scope.data).then(function(response){
-				console.log(response);
-				$location.url("/persons/"+response.data.id);
-			});		
+			$scope.formSubmitted = true; // zviditelnime chyby
+			if($scope.myForm.$valid){
+				$http.post(API + "/persons", $scope.data).then(function(response){
+					$location.url("/persons/"+response.data.id);
+				});
+			}
 		};
 
 	}

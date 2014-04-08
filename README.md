@@ -19,5 +19,6 @@ Workshop AngularJS - basic
 - přidání, mazání a editace osoby (modely)
 
 ## Step 5:
-- základní animace
 - validování formuláře
+- fulltextové vyhledávání
+- základní animace

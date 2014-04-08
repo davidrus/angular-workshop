@@ -1,21 +1,30 @@
 <div ng-controller="EditCtrl">
 	<h1 ng-if="edit">Editace osoby</h1>
 	<h1 ng-if="!edit">Přidání osoby</h1>
-	<form ng-submit="submit()">
+	<form name="myForm" ng-submit="submit()" novalidate>
 		<div class="form-group">
-			<label>Jméno</label><input type="text" ng-model="data.name" />
-			<label>Příjmení</label><input type="text" ng-model="data.surname" />
+			<label>Jméno</label><input type="text" name="firstname" ng-model="data.firstname" required />
+			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.firstname.$error.required">Povinná položka!</span>
+			
+			<label>Příjmení</label><input type="text" ng-model="data.surname" required />
+			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.firstname.$error.required">Povinná položka!</span>
+
+			<label>Email</label><input type="email" name="email" ng-model="data.email" required />
+			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.email.$error.required">Povinná položka!</span>
+			<span class="alert alert-error" ng-if="formSubmitted" ng-show="!myForm.email.$valid">Špatný formát emailu!</span>
 		</div>
 		<div class="form-group">
 			<label>Role</label>
-			<select class="form-control" ng-model="data.role" ng-options="role.id as role.name for role in roles">
+			<select class="form-control" ng-model="data.role" ng-options="role.id as role.name for role in roles" required>
 				<option value="">-- vyberte --</option>
 			</select>
 		</div>
 		<input type="submit" value="Uložit" class="btn btn-default" />
-		<button ng-if="edit" class="btn btn-danger" ng-click="deletePerson()">Smazat</button>
 	</form>
 
 	<pre>{{data}}</pre>
+	<p>Valid: {{myForm.$valid}} {{myForm.data.firstname.$error}}</p>
+
+	<button ng-if="edit" class="btn btn-danger" ng-click="deletePerson()">Smazat</button>
 	
 </div>
