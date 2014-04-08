@@ -1,4 +1,8 @@
 <div ng-controller="DetailCtrl">
 	<h1>{{data.name}}</h1>
+	<img ng-src="/img/{{data.role}}.png" ng-if="data.role" />
 	<a ng-href="/#/persons/edit/{{data.id}}">Editovat</a>
+
+
+
 </div>

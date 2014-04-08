@@ -4,6 +4,13 @@ app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 		$scope.data = response.data;	
 	});
 
+	$scope.deletePerson = function(id,index){
+		$http.delete(API + "/persons/" + id).then(function(response){
+			console.log(response);
+			$scope.data.splice(index,1);
+		});
+	};
+
 }]);
 
 app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
@@ -16,6 +23,16 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,
 }]);
 
 app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', function($scope,$routeParams,$http,$location){
+
+	$scope.roles = [
+		{
+			id:1,
+			name:"Bachař"
+		},{
+			id:2,
+			name:"Vězeň"		
+		}
+	];
 
 	if(!!$routeParams.id){
 
