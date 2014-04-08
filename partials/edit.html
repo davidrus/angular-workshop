@@ -3,7 +3,7 @@
 	<h1 ng-if="!edit">Přidání osoby</h1>
 	<form ng-submit="submit()">
 		<div class="form-group">
-			<label>Jméno</label><input type="text" ng-model="data.name" />
+			<label>Jméno</label><input type="text" ng-model="data.firstname" />
 			<label>Příjmení</label><input type="text" ng-model="data.surname" />
 		</div>
 		<div class="form-group">
@@ -13,9 +13,10 @@
 			</select>
 		</div>
 		<input type="submit" value="Uložit" class="btn btn-default" />
-		<button ng-if="edit" class="btn btn-danger" ng-click="deletePerson()">Smazat</button>
 	</form>
 
 	<pre>{{data}}</pre>
+
+	<button ng-if="edit" class="btn btn-danger" ng-click="deletePerson()">Smazat</button>
 	
 </div>
