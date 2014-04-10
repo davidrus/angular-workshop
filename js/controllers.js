@@ -1,6 +1,6 @@
-app.controller("MainAppCtrl",["$rootScope", function($rootScope){
-	$rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute){
-		$rootScope.title = currentRoute.title;
+app.controller("MainAppCtrl",["$scope", function($scope){
+	$scope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute){
+		$scope.title = currentRoute.title;
 	});	
 }]);
 
@@ -24,7 +24,7 @@ app.controller("DetailCtrl",['$rootScope', '$scope', '$routeParams', '$http', fu
 	$scope.detailId = $routeParams.id;
 	$http.get(API + "/persons/" + $routeParams.id).then(function(response){
 		$scope.data = response.data;
-		$rootScope.title = "Detail osoby: " + response.data.firstname + " " + response.data.surname;
+		$scope.title = "Detail osoby: " + response.data.firstname + " " + response.data.surname;
 	});
 
 }]);
