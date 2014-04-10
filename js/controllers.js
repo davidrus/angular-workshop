@@ -1,6 +1,12 @@
 app.controller("MainAppCtrl",["$scope", function($scope){
+	// změna z routovače
 	$scope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute){
 		$scope.title = currentRoute.title;
+	});	
+
+	// změna z controlleru
+	$scope.$on("changeTitle", function(event, title){
+		$scope.title = title;
 	});	
 }]);
 
@@ -19,12 +25,14 @@ app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 
 }]);
 
-app.controller("DetailCtrl",['$rootScope', '$scope', '$routeParams', '$http', function($rootScope,$scope,$routeParams,$http){
+app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
 
 	$scope.detailId = $routeParams.id;
 	$http.get(API + "/persons/" + $routeParams.id).then(function(response){
 		$scope.data = response.data;
-		$scope.title = "Detail osoby: " + response.data.firstname + " " + response.data.surname;
+		
+		// zavolame signal nahoru, pro zmenu titulku
+		$scope.$emit("changeTitle",$scope.title = "Detail osoby: " + $scope.data.firstname + " " + $scope.data.surname);
 	});
 
 }]);
