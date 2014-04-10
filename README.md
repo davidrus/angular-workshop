@@ -17,7 +17,10 @@ Workshop AngularJS - basic
 
 ## Step 4:
 - přidání, mazání a editace osoby (modely)
+- generovatelný titulek stránky
 
 ## Step 5:
-- základní animace
 - validování formuláře
+- fulltextové vyhledávání
+- základní animace
+- řazení tabulky dle sloupců
