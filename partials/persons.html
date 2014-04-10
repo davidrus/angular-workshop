@@ -1,10 +1,10 @@
 <table class="table table-striped table-bordered table-condensed" ng-controller="ListCtrl">
 	<tr>
-		<th>#</th>
-		<th>Jméno</th>
+		<th><a href="" ng-click="predicate = 'id'; reverse = !reverse">#</a></th>
+		<th><a href="" ng-click="predicate = 'firstname'; reverse = !reverse">Jméno</a></th>
 		<th>Akce</th>
 	</tr>
-    <tr ng-repeat="person in data | filter:searchText | filter:{role:filterRole}" class="animation">
+    <tr ng-repeat="person in data | filter:searchText | orderBy:predicate:reverse | filter:{role:filterRole}" class="animation">
     	<td>{{person.id}}</td>
     	<td><a ng-href="/#/persons/{{person.id}}">{{person.firstname}} {{person.surname}}</a></td>
     	<td>
