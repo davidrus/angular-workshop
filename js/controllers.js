@@ -1,3 +1,9 @@
+app.controller("MainAppCtrl",["$rootScope", function($rootScope){
+	$rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute){
+		$rootScope.title = currentRoute.title;
+	});	
+}]);
+
 app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 
 	$scope.filterRole = "";
@@ -14,11 +20,12 @@ app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 
 }]);
 
-app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
+app.controller("DetailCtrl",['$rootScope', '$scope', '$routeParams', '$http', function($rootScope,$scope,$routeParams,$http){
 
 	$scope.detailId = $routeParams.id;
 	$http.get(API + "/persons/" + $routeParams.id).then(function(response){
 		$scope.data = response.data;
+		$rootScope.title = "Detail osoby: " + response.data.firstname + " " + response.data.surname;
 	});
 
 }]);
