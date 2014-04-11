@@ -33,7 +33,7 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,
 		$scope.data = response.data;
 		
 		// zavolame signal nahoru, pro zmenu titulku
-		$scope.$emit("changeTitle",$scope.title = "Detail osoby: " + $scope.data.firstname + " " + $scope.data.surname);
+		$scope.$emit("changeTitle","Detail osoby: " + $scope.data.firstname + " " + $scope.data.surname);
 	});
 
 }]);
