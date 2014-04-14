@@ -1,5 +1,5 @@
 var app = angular.module("app",['ngRoute']);
-var API = "http://rus-david.kancelar.seznam.cz";
+var API = "http://angular-workshop-server.herokuapp.com";
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider){
 	$routeProvider.when('/persons',{templateUrl:'partials/persons.html'});
