@@ -1,7 +1,7 @@
 app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 
 	$http.get(API + "/persons").then(function(response){
-		$scope.data = response.data;	
+		$scope.data = response.data;
 	});
 
 }]);
