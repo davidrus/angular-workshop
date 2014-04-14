@@ -4,12 +4,12 @@
 		<th>Jméno</th>
 		<th>Akce</th>
 	</tr>
-    <tr ng-repeat="person in data">
-    	<td>{{person.id}}</td>
-    	<td><a ng-href="/#/persons/{{person.id}}">{{person.firstname}} {{person.surname}}</a></td>
-    	<td>
-    		<a ng-href="/#/persons/edit/{{person.id}}" class="btn btn-default">editovat</a>
-    		<span ng-click="deletePerson(person.id,$index)" class="btn btn-danger">smazat</span>
-    	</td>
-    </tr>
+	<tr ng-repeat="person in data">
+		<td>{{person.id}}</td>
+		<td><a ng-href="/#/persons/{{person.id}}">{{person.firstname}} {{person.surname}}</a></td>
+		<td>
+			<a ng-href="/#/persons/edit/{{person.id}}" class="btn btn-default">editovat</a>
+			<span ng-click="deletePerson(person.id,$index)" class="btn btn-danger">smazat</span>
+		</td>
+	</tr>
 </table>
