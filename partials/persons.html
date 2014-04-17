@@ -1,10 +1,17 @@
 <table class="table table-striped table-bordered table-condensed" ng-controller="ListCtrl">
 	<tr>
+		<!-- u odkazu pridame ng-click pro nastaveni filtru "orderBy" -->
 		<th><a href="" ng-click="predicate = 'id'; reverse = !reverse">#</a></th>
-		<th><a href="" ng-click="predicate = 'firstname'; reverse = !reverse">Jméno</a></th>
+		<th><a href="">Jméno</a></th>
 		<th>Akce</th>
 	</tr>
-	<tr ng-repeat="person in data | filter:searchText | orderBy:predicate:reverse | filter:{role:filterRole}" class="animation">
+	<!--
+		///  pridame filtry pro vypis radku tabulky a jejich razeni
+		orderBy:dleCeho(nazevsloupce):vzestupne(bool) // razeni tabulky
+		filter:searchText // fulltext vyhledavani
+		filter:{role:promenna} // filtrovani podle role
+	-->
+	<tr ng-repeat="person in data | orderBy:predicate:reverse" class="animation">
 		<td>{{person.id}}</td>
 		<td><a ng-href="/#/persons/{{person.id}}">{{person.firstname}} {{person.surname}}</a></td>
 		<td>
@@ -15,13 +22,13 @@
 	<tr>
 		<td colspan="2">
 			<h4>Vyhledávání:</h4>
-			<input type="text" name="search" ng-model="searchText" value="" /><br />
+			<input type="text" name="search" value="" /><br />
 		</td>
 		<td>
 			<h4>Chci vypsat:</h4>
-			<input type="radio" name="limit" ng-model="filterRole" value="" /> vše<br />
-			<input type="radio" name="limit" ng-model="filterRole" value="1" /> bachaře<br />
-			<input type="radio" name="limit" ng-model="filterRole" value="2" /> vězně
+			<input type="radio" name="limit" value="" /> vše<br />
+			<input type="radio" name="limit" value="1" /> bachaře<br />
+			<input type="radio" name="limit" value="2" /> vězně
 		</td>
 	</tr>
 </table>
