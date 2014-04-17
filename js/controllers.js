@@ -9,8 +9,7 @@ app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
 app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
 
 	$scope.detailId = $routeParams.id;
-	$http.get(API + "/persons/" + $routeParams.id).then(function(response){
-		$scope.data = response.data;
-	});
+	// tady doplnime http get pozadavek pro nacteni detailu, data posleme do scope.data
+	// url: API + /persons/1 - id uzivatele
 
 }]);
