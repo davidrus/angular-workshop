@@ -65,9 +65,9 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 
 		// mazani
 		$scope.deletePerson = function(){
-			$http.delete(API + "/persons/" + $routeParams.id).then(function(response){
-				$location.url("/persons");
-			});
+			// přidame http request s hlavičkou "delete" pro smazání osoby
+			// url: API + /persons/1 id osoby
+			
 		};
 
 	}else{
