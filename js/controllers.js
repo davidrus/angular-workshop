@@ -1,4 +1,5 @@
-app.controller("MainAppCtrl",["$scope", function($scope){
+app.controller("MainAppCtrl",["$scope", 'initCounter', function($scope, initCounter){
+	initCounter.init("MainAppCtrl");
 	// změna z routovače
 	$scope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute){
 		$scope.title = currentRoute.title;
@@ -10,11 +11,11 @@ app.controller("MainAppCtrl",["$scope", function($scope){
 	});
 }]);
 
-app.controller("ListCtrl",["$scope", "$http", "persons", function($scope, $http, persons){
+app.controller("ListCtrl",["$scope", "$http", "persons", 'initCounter', function($scope, $http, persons, initCounter){
+	initCounter.init("ListCtrl");
 
 	persons.query().$promise.then(function(resource){
 		$scope.data = resource;
-		console.log(resource);
 	});
 	$scope.filterRole = "";
 
@@ -26,7 +27,8 @@ app.controller("ListCtrl",["$scope", "$http", "persons", function($scope, $http,
 
 }]);
 
-app.controller("DetailCtrl",['$scope', '$routeParams', '$http', 'persons', function($scope,$routeParams,$http,persons){
+app.controller("DetailCtrl",['$scope', '$routeParams', '$http', 'persons', 'initCounter', function($scope,$routeParams,$http,persons, initCounter){
+	initCounter.init("DetailCtrl");
 
 	$scope.detailId = $routeParams.id;
 	persons.get({personId:$routeParams.id}).$promise.then(function(response){
@@ -38,7 +40,8 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', 'persons', funct
 
 }]);
 
-app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'persons', function($scope,$routeParams,$http,$location,persons){
+app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'persons', 'initCounter', function($scope,$routeParams,$http,$location,persons, initCounter){
+	initCounter.init("EditCtrl");
 	$scope.dataResource = new persons();
 
 	$scope.roles = [
