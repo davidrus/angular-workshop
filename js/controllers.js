@@ -10,27 +10,27 @@ app.controller("MainAppCtrl",["$scope", function($scope){
 	});
 }]);
 
-app.controller("ListCtrl",["$scope", "$http", function($scope, $http){
+app.controller("ListCtrl",["$scope", "$http", "persons", function($scope, $http, persons){
 
+	persons.query().$promise.then(function(resource){
+		$scope.data = resource;
+		console.log(resource);
+	});
 	$scope.filterRole = "";
 
-	$http.get(API + "/persons").then(function(response){
-		$scope.data = response.data;
-	});
-
-	$scope.deletePerson = function(id,index){
-		$http.delete(API + "/persons/" + id).then(function(response){
+	$scope.deletePerson = function(personResource,index){
+		personResource.$remove({personId:personResource.id}).then(function(resource){
 			$scope.data.splice(index,1);
 		});
 	};
 
 }]);
 
-app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,$routeParams,$http){
+app.controller("DetailCtrl",['$scope', '$routeParams', '$http', 'persons', function($scope,$routeParams,$http,persons){
 
 	$scope.detailId = $routeParams.id;
-	$http.get(API + "/persons/" + $routeParams.id).then(function(response){
-		$scope.data = response.data;
+	persons.get({personId:$routeParams.id}).$promise.then(function(response){
+		$scope.data = response;
 
 		// zavolame signal nahoru, pro zmenu titulku
 		$scope.$emit("changeTitle","Detail osoby: " + $scope.data.firstname + " " + $scope.data.surname);
@@ -38,7 +38,8 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', function($scope,
 
 }]);
 
-app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', function($scope,$routeParams,$http,$location){
+app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'persons', function($scope,$routeParams,$http,$location,persons){
+	$scope.dataResource = new persons();
 
 	$scope.roles = [
 		{
@@ -53,15 +54,15 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 	if(!!$routeParams.id){
 
 		$scope.edit = true;
-		$http.get(API + "/persons/" + $routeParams.id).then(function(response){
-			$scope.data = response.data;
+		persons.get({personId:$routeParams.id}).$promise.then(function(resource){
+			$scope.dataResource = resource;
 		});
 
 		// ukladani
 		$scope.submit = function(){
 			$scope.formSubmitted = true; // zviditelnime chyby
 			if($scope.myForm.$valid){
-				$http.put(API + "/persons/" + $routeParams.id, $scope.data).then(function(response){
+				$scope.dataResource.$savePut({personId:$routeParams.id}).then(function(response){
 					$location.url("/persons/"+$routeParams.id);
 				});
 			}
@@ -69,7 +70,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 
 		// mazani
 		$scope.deletePerson = function(){
-			$http.delete(API + "/persons/" + $routeParams.id).then(function(response){
+			$scope.dataResource.$remove({personId:$routeParams.id}).then(function(response){
 				$location.url("/persons");
 			});
 		};
@@ -79,8 +80,8 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', funct
 		$scope.submit = function(){
 			$scope.formSubmitted = true; // zviditelnime chyby
 			if($scope.myForm.$valid){
-				$http.post(API + "/persons", $scope.data).then(function(response){
-					$location.url("/persons/"+response.data.id);
+				$scope.dataResource.$save().then(function(response){
+					$location.url("/persons/"+response.id);
 				});
 			}
 		};
