@@ -24,3 +24,8 @@ Workshop AngularJS - basic
 - fulltextové vyhledávání
 - základní animace
 - řazení tabulky dle sloupců
+
+## Step 6:
+- vlastní direktiva
+- resources
+- ukázka services a factory
