@@ -1,4 +1,4 @@
-var app = angular.module("app",['ngRoute','ngAnimate']);
+var app = angular.module("app",['ngRoute','ngAnimate','ngResource']);
 var API = "http://angular-workshop-server.herokuapp.com";
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider){

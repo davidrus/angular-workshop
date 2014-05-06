@@ -3,27 +3,27 @@
 	<h1 ng-if="!edit">Přidání osoby</h1>
 	<form name="myForm" ng-submit="submit()" novalidate>
 		<div class="form-group">
-			<label>Jméno</label><input type="text" name="firstname" ng-model="data.firstname" required />
+			<label>Jméno</label><input type="text" name="firstname" ng-model="dataResource.firstname" required />
 			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.firstname.$error.required">Povinná položka!</span>
 
-			<label>Příjmení</label><input type="text" name="surname" ng-model="data.surname" required />
+			<label>Příjmení</label><input type="text" name="surname" ng-model="dataResource.surname" required />
 			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.surname.$error.required">Povinná položka!</span>
 
-			<label>Email</label><input type="email" name="email" ng-model="data.email" required />
+			<label>Email</label><input type="email" name="email" ng-model="dataResource.email" required />
 			<span class="alert alert-error" ng-if="formSubmitted" ng-show="myForm.email.$error.required">Povinná položka!</span>
 			<span class="alert alert-error" ng-if="formSubmitted" ng-show="!myForm.email.$valid">Špatný formát emailu!</span>
 		</div>
 		<div class="form-group">
 			<label>Role</label>
-			<select class="form-control" ng-model="data.role" ng-options="role.id as role.name for role in roles" required>
+			<select class="form-control" ng-model="dataResource.role" ng-options="role.id as role.name for role in roles" required>
 				<option value="">-- vyberte --</option>
 			</select>
 		</div>
 		<input type="submit" value="Uložit" class="btn btn-default" />
 	</form>
 
-	<pre>{{data}}</pre>
-	<p>Valid: {{myForm.$valid}} {{myForm.data.firstname.$error}}</p>
+	<pre>{{dataResource}}</pre>
+	<p>Valid: {{myForm.$valid}} {{myForm.dataResource.firstname.$error}}</p>
 
 	<button ng-if="edit" class="btn btn-danger" ng-click="deletePerson()">Smazat</button>
 
