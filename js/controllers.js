@@ -20,7 +20,7 @@ app.controller("ListCtrl",["$scope", "$http", "persons", 'initCounter', function
 	$scope.filterRole = "";
 
 	$scope.deletePerson = function(personResource,index){
-		personResource.$remove({personId:personResource.id}).then(function(resource){
+		personResource.$remove().then(function(resource){
 			$scope.data.splice(index,1);
 		});
 	};
@@ -31,7 +31,7 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', 'persons', 'init
 	initCounter.init("DetailCtrl");
 
 	$scope.detailId = $routeParams.id;
-	persons.get({personId:$routeParams.id}).$promise.then(function(response){
+	persons.get().$promise.then(function(response){
 		$scope.data = response;
 
 		// zavolame signal nahoru, pro zmenu titulku
@@ -57,7 +57,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'pers
 	if(!!$routeParams.id){
 
 		$scope.edit = true;
-		persons.get({personId:$routeParams.id}).$promise.then(function(resource){
+		persons.get().$promise.then(function(resource){
 			$scope.dataResource = resource;
 		});
 
@@ -65,7 +65,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'pers
 		$scope.submit = function(){
 			$scope.formSubmitted = true; // zviditelnime chyby
 			if($scope.myForm.$valid){
-				$scope.dataResource.$savePut({personId:$routeParams.id}).then(function(response){
+				$scope.dataResource.$savePut().then(function(response){
 					$location.url("/persons/"+$routeParams.id);
 				});
 			}
@@ -73,7 +73,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'pers
 
 		// mazani
 		$scope.deletePerson = function(){
-			$scope.dataResource.$remove({personId:$routeParams.id}).then(function(response){
+			$scope.dataResource.$remove().then(function(response){
 				$location.url("/persons");
 			});
 		};
