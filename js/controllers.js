@@ -31,7 +31,7 @@ app.controller("DetailCtrl",['$scope', '$routeParams', '$http', 'persons', 'init
 	initCounter.init("DetailCtrl");
 
 	$scope.detailId = $routeParams.id;
-	persons.get().$promise.then(function(response){
+	persons.get({userId:$routeParams.id}).$promise.then(function(response){
 		$scope.data = response;
 
 		// zavolame signal nahoru, pro zmenu titulku
@@ -57,7 +57,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'pers
 	if(!!$routeParams.id){
 
 		$scope.edit = true;
-		persons.get().$promise.then(function(resource){
+		persons.get({userId:$routeParams.id}).$promise.then(function(resource){
 			$scope.dataResource = resource;
 		});
 
@@ -73,7 +73,7 @@ app.controller("EditCtrl",['$scope', '$routeParams', '$http', '$location', 'pers
 
 		// mazani
 		$scope.deletePerson = function(){
-			$scope.dataResource.$remove().then(function(response){
+			$scope.dataResource.$remove({userId:$routeParams.id}).then(function(response){
 				$location.url("/persons");
 			});
 		};
